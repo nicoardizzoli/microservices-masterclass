@@ -21,7 +21,8 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
         //TODO: check if email not taken
         Customer customerSaved = customerRepository.saveAndFlush(customer);
         //TODO: check if fraudster
-        FraudCheckDto fraudCheckDto = restTemplate.getForObject("http://localhost:8082/api/v1/fraud-check/{customerId}", FraudCheckDto.class, customerSaved.getId());
+        //CON SERVICE DISCOVERY USANDO EUREKA, CAMBIAMOS EL LOCALHOST:8082 por FRAUD que es el nombre del servicio en EUREKA.
+        FraudCheckDto fraudCheckDto = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}", FraudCheckDto.class, customerSaved.getId());
         if (fraudCheckDto.isFraudster()) {
             throw new IllegalAccessException("Fraudster");
         }

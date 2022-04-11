@@ -8,5 +8,10 @@ ahora estamos usando la misma base con diferentes schemas
 
 - COMUNICACION ENTRE MICROSERVICIOS:
 Rest template:
-Services Discovery:
+Services Discovery: Is the process of automatically detecting devices and services on a network, ej Eureka Server (es de spring)
+muchos de estos atributos nos los da Spring Cloud.
+Cuando hay muchas instancias de un mismo servicio por ej en diferentes ports, se usa un LoadBalancer que va repartiendo las peticiones a las diferentes instancias.
+En este caso configuramos la clase RestTemplate con la anotattion @LoadBalanced y listo!
+
+
 Openfeign
