@@ -14,4 +14,6 @@ Cuando hay muchas instancias de un mismo servicio por ej en diferentes ports, se
 En este caso configuramos la clase RestTemplate con la anotattion @LoadBalanced y listo!
 
 
-Openfeign
+Openfeign: reduce la complejidad cuando usamos rest http clients.
+basicamente cuando hay cosas que queremos compartir con varios microservicios, generamos un cliente Feign y podemos usarlo en todos los servicios.
+es para evitar codigo duplicado, podemos compartir info entre los microservicios. en Feign se hace una interface q expone los metodos del cliente q queremos.

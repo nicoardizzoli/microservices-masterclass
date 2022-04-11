@@ -1,4 +1,4 @@
-package dto;
+package com.nicoardizzoli.clients.fraud;
 
 import lombok.Builder;
 
