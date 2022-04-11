@@ -1,2 +1,12 @@
 custom banner:
 https://devops.datenkollektiv.de/banner.txt/index.html
+
+application.yml
+Por cada microservicio, tiene que haber una base de datos diferente,
+ahora estamos usando la misma base con diferentes schemas
+
+
+- COMUNICACION ENTRE MICROSERVICIOS:
+Rest template:
+Services Discovery:
+Openfeign

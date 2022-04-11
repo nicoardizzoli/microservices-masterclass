@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public record CustomerController(CustomerService customerService) {
 
     @PostMapping
-    public void registerCustomer(@RequestBody CustomerDto customerDto) {
+    public void registerCustomer(@RequestBody CustomerDto customerDto) throws IllegalAccessException {
         log.info("new customer registration {}", customerDto);
         customerService.registerCustomer(customerDto);
     }
