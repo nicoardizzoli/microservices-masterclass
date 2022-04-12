@@ -1,15 +1,18 @@
 package com.nicoardizzoli.customer.service;
 
+import com.nicoardizzoli.clients.fraud.FraudCheckDto;
 import com.nicoardizzoli.clients.fraud.FraudClient;
+import com.nicoardizzoli.clients.notification.NotificationClient;
+import com.nicoardizzoli.clients.notification.NotificationDto;
 import com.nicoardizzoli.customer.dto.CustomerDto;
-import com.nicoardizzoli.customer.dto.FraudCheckDto;
 import com.nicoardizzoli.customer.model.Customer;
 import com.nicoardizzoli.customer.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient) {
+public record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient,
+                              NotificationClient notificationClient) {
 
     public void registerCustomer(CustomerDto customerDto) throws IllegalAccessException {
         Customer customer = Customer.builder()
@@ -30,8 +33,13 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
         }
 
         //USANDO OPENFEIGN (suponiendo que el metodo de arriba lo repetimos en muchos microservicios
-        fraudClient.isFraudster(customerSaved.getId());
-        //TODO: send notification
+        Integer customerId = customerSaved.getId();
+        if (!fraudClient.isFraudster(customerId).isFraudster()) {
+            //TODO: send notification
+
+            notificationClient.sendNotification(new NotificationDto(customerId, "NOTIFICACION ENVIADA AL CUSTOMER" + customerId));
+            System.out.println("Notification sent");
+        }
 
 
     }
