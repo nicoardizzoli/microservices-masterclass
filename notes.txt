@@ -17,3 +17,11 @@ En este caso configuramos la clase RestTemplate con la anotattion @LoadBalanced 
 Openfeign: reduce la complejidad cuando usamos rest http clients.
 basicamente cuando hay cosas que queremos compartir con varios microservicios, generamos un cliente Feign y podemos usarlo en todos los servicios.
 es para evitar codigo duplicado, podemos compartir info entre los microservicios. en Feign se hace una interface q expone los metodos del cliente q queremos.
+
+
+Spring Cloud Sleuth: spring boot auto-configuration for distributed tracing
+Agrega un camino entre las comunicaciones de los microservicios. ej:
+INFO [fraud,38e88ed3afa8f03a(trace id),40a43cdc1dcdd05a (span id)]
+
+Zipkin: distributed tracing system. si tenemos el trace id in a log file, podemos ir directamente a el.
+Lo instalamos como una docker image en el docker-compose, es un zipkin server para ver el trace de las comunicaciones entre los servicios.
