@@ -1,5 +1,6 @@
 package com.nicoardizzoli.notification.service;
 
+import com.nicoardizzoli.clients.notification.NotificationDto;
 import com.nicoardizzoli.notification.model.Notification;
 import com.nicoardizzoli.notification.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,10 +12,10 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
 
-    public void sendNotification(Integer customerId, String text) {
+    public void sendNotification(NotificationDto notificationDto) {
         Notification notification = Notification.builder()
-                .customerId(customerId)
-                .text(text)
+                .customerId(notificationDto.customerId())
+                .text(notificationDto.text())
                 .build();
 
         notificationRepository.save(notification);

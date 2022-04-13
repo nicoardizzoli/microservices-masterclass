@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "spring.rabbitmq.exchanges.internal",
+      "type": "java.lang.String",
+      "description": "Description for spring.rabbitmq.exchanges.internal."
+    },
+    {
+      "name": "rabbitmq.exchanges.internal",
+      "type": "java.lang.String",
+      "description": "Description for rabbitmq.exchanges.internal."
+    },
+    {
+      "name": "rabbitmq.queue.notification",
+      "type": "java.lang.String",
+      "description": "Description for rabbitmq.queue.notification."
+    },
+    {
+      "name": "rabbitmq.routing-keys.internal-notification",
+      "type": "java.lang.String",
+      "description": "Description for rabbitmq.routing-keys.internal-notification."
+    }
+  ] }

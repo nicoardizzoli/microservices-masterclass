@@ -25,3 +25,18 @@ INFO [fraud,38e88ed3afa8f03a(trace id),40a43cdc1dcdd05a (span id)]
 
 Zipkin: distributed tracing system. si tenemos el trace id in a log file, podemos ir directamente a el.
 Lo instalamos como una docker image en el docker-compose, es un zipkin server para ver el trace de las comunicaciones entre los servicios.
+
+Load balancer (siempre usar en de Google Cloud o AWS)
+agarra un request y lo reparte segun las instancias de los servicios que tenemos disponibles, hay external (el q recibe desde los clientes)
+e internal, el q recibe del external.
+Usa casi siempre el algoritmo Round Robbin (segun la cantidad de instancias va en orden y circular) aunque hay otros algoritmos para manejar
+Tambien realiza health checks (hace un check si el servicio esta ok y le manda el request).
+
+Spring Cloud Gateway (seria un loadbalancer local pero no se usa nunca)
+
+---------------
+
+Message queues: Rabbit MQ , KAFKA (son brokers), Amazon SQS
+AMQP 0-9-1 (Advanced message queuing protocol.
+Brokers receive messages from publishers (applications) and route them to consumers (applications that process them)
+rabbitMQ es async por default no importa si pasa algo el codigo sigue igual.

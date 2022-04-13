@@ -17,6 +17,6 @@ public class NotificationController {
 
     @PostMapping
     public void sendNotification(@RequestBody NotificationDto notificationDto) {
-        notificationService.sendNotification(notificationDto.customerId(), notificationDto.text());
+        notificationService.sendNotification(notificationDto);
     }
 }

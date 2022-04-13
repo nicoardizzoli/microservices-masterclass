@@ -1,5 +1,6 @@
 package com.nicoardizzoli.customer.service;
 
+import com.nicoardizzoli.amqp.RabbitMQMessageProducer;
 import com.nicoardizzoli.clients.fraud.FraudCheckDto;
 import com.nicoardizzoli.clients.fraud.FraudClient;
 import com.nicoardizzoli.clients.notification.NotificationClient;
@@ -11,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public record CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient,
-                              NotificationClient notificationClient) {
+public record CustomerService(CustomerRepository customerRepository,
+                              RestTemplate restTemplate,
+                              FraudClient fraudClient,
+                              RabbitMQMessageProducer rabbitMQMessageProducer) {
 
     public void registerCustomer(CustomerDto customerDto) throws IllegalAccessException {
         Customer customer = Customer.builder()
@@ -35,9 +38,10 @@ public record CustomerService(CustomerRepository customerRepository, RestTemplat
         //USANDO OPENFEIGN (suponiendo que el metodo de arriba lo repetimos en muchos microservicios
         Integer customerId = customerSaved.getId();
         if (!fraudClient.isFraudster(customerId).isFraudster()) {
-            //TODO: send notification
 
-            notificationClient.sendNotification(new NotificationDto(customerId, "NOTIFICACION ENVIADA AL CUSTOMER" + customerId));
+            NotificationDto notificationDto = new NotificationDto(customerId, "NOTIFICACION ENVIADA AL CUSTOMER" + customerId);
+
+            rabbitMQMessageProducer.publish(notificationDto, "internal.exchange", "internal.notification.routing-key");
             System.out.println("Notification sent");
         }
 
