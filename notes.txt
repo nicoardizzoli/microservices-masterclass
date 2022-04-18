@@ -40,3 +40,14 @@ Message queues: Rabbit MQ , KAFKA (son brokers), Amazon SQS
 AMQP 0-9-1 (Advanced message queuing protocol.
 Brokers receive messages from publishers (applications) and route them to consumers (applications that process them)
 rabbitMQ es async por default no importa si pasa algo el codigo sigue igual.
+
+-----
+
+packaging modules in jar:
+en el pom poner <packaging>jar</packaging> de los que querramos compilar, luego se hace mvn compile y mvn package
+ampq y clients (porque no son microservicios)
+
+
+----
+
+packaging jars and run in docker img
