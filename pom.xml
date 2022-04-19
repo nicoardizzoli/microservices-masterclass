@@ -117,7 +117,7 @@
             </plugins>
         </pluginManagement>
 
-<!--        //en este todos los subomudlos tienen los plugins-->
+<!--        //en este todos los submodulos tienen los plugins-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
