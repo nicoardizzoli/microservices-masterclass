@@ -25,11 +25,11 @@ spring:
 
 
 #KUBERNETES TIENE INCLUIDO SERVICE DISCOVERY EN SU CLUSTER ASI QUE NO HACE FALTA EUREKA SERVER
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://eureka-server:8761/eureka
-#    enabled: false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    enabled: false
 
 #NO FUNCIONA HAY Q CONFIGURAR EL PROCESSOR O NO SE Q
 #rabbitmq:
