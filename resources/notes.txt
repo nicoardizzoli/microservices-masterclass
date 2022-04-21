@@ -54,3 +54,7 @@ packaging jars and run in docker img
 se puede usar el plugin de springboot de maven
 
 o vamos a usar JIB que es de google para hacer la imagen
+
+
+---------------------
+
