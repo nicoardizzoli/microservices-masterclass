@@ -30,10 +30,10 @@ public record CustomerService(CustomerRepository customerRepository,
         //TODO: check if fraudster
 
         //CON SERVICE DISCOVERY USANDO EUREKA, CAMBIAMOS EL LOCALHOST:8082 por FRAUD que es el nombre del servicio en EUREKA.
-        FraudCheckDto fraudCheckDto = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}", FraudCheckDto.class, customerSaved.getId());
-        if (fraudCheckDto.isFraudster()) {
-            throw new IllegalAccessException("Fraudster");
-        }
+//        FraudCheckDto fraudCheckDto = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}", FraudCheckDto.class, customerSaved.getId());
+//        if (fraudCheckDto.isFraudster()) {
+//            throw new IllegalAccessException("Fraudster");
+//        }
 
         //USANDO OPENFEIGN (suponiendo que el metodo de arriba lo repetimos en muchos microservicios
         Integer customerId = customerSaved.getId();

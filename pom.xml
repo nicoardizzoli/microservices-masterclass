@@ -11,7 +11,6 @@
     <modules>
         <module>customer</module>
         <module>fraud</module>
-        <module>eureka-server</module>
         <module>clients</module>
         <module>notification</module>
         <module>advance-message-queue-rabbitmq</module>
@@ -117,7 +116,7 @@
             </plugins>
         </pluginManagement>
 
-<!--        //en este todos los subomudlos tienen los plugins-->
+<!--        //en este todos los submodulos tienen los plugins-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
